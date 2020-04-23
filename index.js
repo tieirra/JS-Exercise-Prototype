@@ -39,9 +39,44 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
+//
 
+function Person(attributes) {
+ this.name = attributes.name;
+ this.age =  attributes.age;
+ this.stomach = [];
 }
+
+ 
+Person.prototype.eat = function(edible) {
+ if (this.stomach.length < 10) {
+  this.stomach.push(edible);
+  }
+}
+
+Person.prototype.poop = function(){
+  this.stomach = [];
+}
+
+Person.prototype.toString = function(){
+return '${this.name}, ${this.age}';
+}
+
+const personOne = new Person({
+  name: 'Zion',
+  age: 4,
+});
+  
+
+console.log(personOne());
+
+personOne.eat('ramen');
+personOne.eat('pizza');
+personOne.eat('tacos');
+console.log(personOne.stomach);
+personOne.poop();
+console.log(personOne.stomach);
+
 
 /*
   TASK 2
@@ -57,9 +92,30 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(model, milesPerGallon){
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank = 0;
+  this.odometer = 0;
 }
+
+//Car.prototype.fill = (gallon){
+  if(this.tank = 0){
+  //this.tank.push(gallon); 
+  }
+//}
+
+Car.prototype.toString = function {
+  return `${this.tank}, ${this.milesPerGallon}`;
+}
+
+
+const carOne = new Car('Benz', 20);
+const CarTwo = new Car('Audi', 30);
+
+carOne.fill(7);
+
+
 
 /*
   TASK 3
@@ -68,18 +124,34 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
+function Baby(attributes) {
+  this.name = attributes.name;
+  this.age = attributes.age;
+  this.FavoriteToy = attributes.FavoriteToy;
+ }
+  
+ Baby.prototype.play = function(toys) {
+  console.log('{$this.name} is playing with {$FavoriteToy}');
+  console.log(this);
+   
+ }
+ 
+ const baby = new Person({
+   name: 'Zion',
+   age: 4,
+  FavoriteToy: 'Dinosaurs',
 
-}
+ });
 
+ console.log(baby.play());
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Global context-binding
+  2. implict binding
+  3. New binding
+  4. Explicit Binding
 */
 
 
